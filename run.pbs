@@ -1,0 +1,10 @@
+#!/bin/sh
+
+#PBS -lnodes=16:ppn=1
+#PBS -lwalltime=0.05
+## Specify the shell to be bash
+#PBS -S /bin/bash
+
+mpirun -np 16 -machinefile $PBS_NODEFILE ./mpi 10000 10000
+mpirun -np 8 -machinefile $PBS_NODEFILE ./mpi 20000 20000
+mpirun -np 16 -machinefile $PBS_NODEFILE ./mpi 20000 40000
